@@ -1,1 +1,1 @@
-[ggg](investing/portfolio.md)
+[Формирование портфеля](investing/index.md)
