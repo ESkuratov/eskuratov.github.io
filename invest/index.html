@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>index.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="%D1%84%D0%BE%D1%80%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-%D0%BF%D0%BE%D1%80%D1%82%D1%84%D0%B5%D0%BB%D1%8F">Формирование портфеля</h1>
+<p><a href="#1.2.-%D0%A2%D0%B0%D0%BA%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B5-%D0%B8%D0%B4%D0%B5%D0%B8">1.2. Тактические идеи</a><br>
+<a href="#%D0%90%D0%BA%D1%86%D0%B8%D0%B8">2. Акции</a><br>
+<a href="#%D0%94%D0%B8%D0%B2%D0%B8%D0%B4%D0%B5%D0%BD%D1%82%D1%8B">3. Дивидинты</a><br>
+<a href="#%D0%9E%D0%B1%D0%BB%D0%B8%D0%B3%D0%B0%D1%86%D0%B8%D0%B8">4. Облигации</a><br>
+<a href="#%D0%98%D0%B4%D0%B5%D0%B8-%D0%B4%D0%BB%D1%8F-%D0%B8%D0%BD%D0%B2%D0%B5%D1%81%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F">5. Идеи для инвестирования</a><br>
+<a href="#%D0%A0%D1%8B%D0%BD%D0%BA%D0%B8">6. Рынки</a><br>
+<a href="#%D0%9D%D0%B0%D0%BB%D0%BE%D0%B3%D0%B8">7. Налоги</a><br>
+<a href="#8.-%D0%A4%D1%83%D0%BD%D0%B4%D0%B0%D0%BC%D0%B5%D0%BD%D1%82%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9-%D0%B0%D0%BD%D0%B0%D0%BB%D0%B8%D0%B7">8. Фундаментальный анализ</a><br>
+<a href="#8.1.-%D0%A1%D1%82%D1%80%D0%B0%D1%82%D0%B5%D0%B3%D0%B8%D0%B8">8.1. Стратегии</a><br>
+<a href="#9.-%D0%A2%D0%B5%D1%85%D0%BD%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9-%D0%B0%D0%BD%D0%B0%D0%BB%D0%B8%D0%B7">9. Технический анализ</a></p>
+<h1 id="%D0%BF%D0%BE%D1%80%D1%82%D1%84%D0%B5%D0%BB%D1%8C">Портфель</h1>
+<p><strong>Ядро портфеля:</strong></p>
+<ul>
+<li>акции</li>
+<li>облигации</li>
+<li>золото</li>
+</ul>
+<p><strong>Структура портфеля:</strong></p>
+<ul>
+<li>консервативный
+<ul>
+<li>70% облигации</li>
+<li>20% акции</li>
+<li>10% золото</li>
+</ul>
+</li>
+<li>умеренный инвесто
+<ul>
+<li>40-60% облигации</li>
+<li>30-40% акции</li>
+<li>10% золото</li>
+</ul>
+</li>
+<li>агрессивный
+<ul>
+<li>35% облигации</li>
+<li>50% акции</li>
+<li>15% золото</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<ul>
+<li>Определить риск профиль под каждую цель</li>
+<li>Хайповые акции - 5-7% от партфеля</li>
+</ul>
+</blockquote>
+<h2 id="12-%D1%82%D0%B0%D0%BA%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B5-%D0%B8%D0%B4%D0%B5%D0%B8">1.2. Тактические идеи</h2>
+<p>10% от ядра акций на тактические идеи</p>
+<h1 id="%D0%B0%D0%BA%D1%86%D0%B8%D0%B8">Акции</h1>
+<p>Прописявать причину покупки акции в портфеле</p>
+<blockquote>
+<p>Падение прибыли компании ниже падения стоимости акции,
+то стоимость акции еще будет падать</p>
+</blockquote>
+<ul>
+<li>Календарь отчетности
+<ul>
+<li>сохрнать график отчечтности компаний</li>
+<li>следить за отчетность своих компании из портфеля</li>
+</ul>
+</li>
+</ul>
+<p><strong>Правила формирования портфеля:</strong></p>
+<ul>
+<li>диверсификация
+<ul>
+<li>по секторам</li>
+<li>отрицательная корреляция</li>
+</ul>
+</li>
+<li>цикличные сектора</li>
+</ul>
+<p><strong>Список акций Московской биржи:</strong></p>
+<ul>
+<li>первый уровень</li>
+<li>второй уровень</li>
+<li>третий уровень</li>
+</ul>
+<h2 id="%D1%87%D1%83%D0%B2%D1%81%D1%82%D0%B2%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D1%81%D1%82%D1%8C-%D1%81%D0%B5%D0%BA%D1%82%D0%BE%D1%80%D0%BE%D0%B2-%D0%BA-%D0%BA%D1%80%D0%B8%D0%B7%D0%B8%D1%81%D1%83-%D0%B8-%D1%81%D0%BA%D0%BE%D1%80%D0%BE%D1%81%D1%82%D1%8C-%D0%B2%D0%BE%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F">Чувствительность секторов к кризису и скорость востановления</h2>
+<blockquote>
+<p>Первыми падают первыми подымаются<br>
+Стимулирование экономики происходит через финансовый сектор</p>
+</blockquote>
+<ol>
+<li>Потреб сектора</li>
+<li>Банки</li>
+<li>Сырьевые компании</li>
+<li>Телекомы</li>
+<li>Электроэнергетика</li>
+</ol>
+<h2 id="%D1%80%D0%B5%D0%B1%D0%B0%D0%BB%D0%B0%D0%BD%D1%81%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0-%D0%BF%D0%BE%D1%80%D1%82%D1%84%D0%B5%D0%BB%D1%8F-%D0%BF%D0%BE-%D1%81%D0%B5%D0%BA%D1%82%D0%BE%D1%80%D0%B0%D0%BC">Ребалансировка портфеля по секторам</h2>
+<p>На время апреля 2020</p>
+<ul>
+<li>Лучше рынка: Телекомы, IT(РФ), электроэнергетика(Россети) - больше в портфеле</li>
+<li>Нейтрально: финансы, металлы, потреб сектор</li>
+<li>Хуже рынка: нефть - меньше в портфеле</li>
+</ul>
+<p>![[первый эшелон Российского рынка]]
+[[Стратегии инвестирования]]</p>
+<h1 id="%D0%B4%D0%B8%D0%B2%D0%B8%D0%B4%D0%B5%D0%BD%D1%82%D1%8B">Дивиденты</h1>
+<p><strong>Влияние на дивидендную политику компании:</strong></p>
+<ul>
+<li>чистая прибыль</li>
+<li>свободный денежный поток(FCF)</li>
+<li>EBITDA</li>
+<li>отношение чистого долга к EBITDA</li>
+<li>решения акционеров в пользу фиксированных выплат</li>
+<li>наличие правила увеличения дивидендов</li>
+</ul>
+<p><strong>Дата дивидентной отсечки</strong> - дата закрытия реестра<br>
+<strong>Дивидентный геп</strong> - резкое падение стоимости акции после выплаты дивидентов</p>
+<h1 id="%D0%BE%D0%B1%D0%BB%D0%B8%D0%B3%D0%B0%D1%86%D0%B8%D0%B8">Облигации</h1>
+<p>Доходность к погашению</p>
+<h1 id="%D1%80%D1%8B%D0%BD%D0%BA%D0%B8">Рынки</h1>
+<ul>
+<li>Китай</li>
+<li>США</li>
+<li>Россия</li>
+<li>Европа</li>
+</ul>
+<p>Май, июнь востановление рынка</p>
+<ul>
+<li>Макропоказатели рынка</li>
+<li>Микропоказатели рынка</li>
+</ul>
+<h1 id="%D0%B8%D0%B4%D0%B5%D0%B8-%D0%B4%D0%BB%D1%8F-%D0%B8%D0%BD%D0%B2%D0%B5%D1%81%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F">Идеи для инвестирования</h1>
+<ul>
+<li>Акции Московской биржи. Брать. так как увеличила объем торгов февраль/март. соответсвенно покажет хорошую отчетность</li>
+<li>Магнит, Лента чуть чуть добавить в порфтель не должно быть сильных убытков по отчетности</li>
+<li>Юнипро квази - электроэнергетика защитный сектор застроховон от любых кризисов и скачков по нефти</li>
+<li>Сергутнефтигаз привилигированые. при сильной девольвации рубля хорошая выручка. на балансе активы привязаные к доллару</li>
+<li>Яндекс. растет всегда. поддержка правительства. нет драйверов для падения.</li>
+<li>Дивиденты по нефтеным компаниям будут зависить от их корпоротивной прибыли(снижается из-за снижения потребительской активности, укрепление рубля).</li>
+<li>Транспортный компании(Аэрофлот) только убытки из-за снижения потребительской</li>
+<li>Лукой и Сургутнефтегаз. Лукойл обвалиться в рублях если не будет договоренности с опек и Сургутнефтегаз вырасти если обвалиться рубль</li>
+<li>Газ считаеться лучше чем нефть</li>
+<li>Сбер</li>
+<li>Роснефть</li>
+<li>Интеррао</li>
+<li>россвет</li>
+</ul>
+<h1 id="%D0%BD%D0%B0%D0%BB%D0%BE%D0%B3%D0%B8">Налоги</h1>
+<p>налого физ лиц 13%
+дивденды</p>
+<p>налого от облигаций 35%</p>
+<p>Налоги отчисляет брокер
+приходят дивиденты отчищенные от налогов
+в момент вывода денег с продаж
+по итогам года</p>
+<p>оптимизация налогов<br>
+закрыть убыточную позицию и снова купить до конца года. зафиксировать убыточность. таким образом общий доход уменьшелся</p>
+<p>налоговые льготы</p>
+<ul>
+<li>владение цб 3 года более не платим налог с продажи, а с дивидендов платишь</li>
+<li>акции it рынка 1 год</li>
+<li>доход в размере 3 миллионов за год не подлежат налогу, тоесть в течении 3 лет можно получить 9 мил</li>
+<li>5 лет владения акциям лимит на налог получается 15 млн</li>
+<li>купоны по облигациями если ОФЗ и муницыпального займа</li>
+</ul>
+<h2 id="8-%D1%84%D1%83%D0%BD%D0%B4%D0%B0%D0%BC%D0%B5%D0%BD%D1%82%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9-%D0%B0%D0%BD%D0%B0%D0%BB%D0%B8%D0%B7">8. Фундаментальный-анализ</h2>
+<p><strong>сайты для быстрой оценки:</strong></p>
+<ul>
+<li>https://blackterminal.ru/</li>
+<li>https://simplywall.st/</li>
+</ul>
+<pre><code class="language-mermaid"><div class="mermaid">graph TD
+id1(Fundamental Analysis......) --> id2(Quantitative...)
+id1 -->id3(Qualitative...)
+</div></code></pre>
+<p><strong>Мультипликаторы:</strong></p>
+<ul>
+<li>Капитализация</li>
+<li>Выручка</li>
+<li>Чистая прибыль</li>
+<li>P/S</li>
+<li>P/B</li>
+<li>EV/EBITDA</li>
+<li>Рентабельност EBITDA</li>
+<li>Долг/EBITDA</li>
+</ul>
+<p><strong>Рост</strong></p>
+<blockquote>
+<p>Отражает наши ожидания среднего темпа роста выручки компании в
+ближайшие 4 года. 10 - самые быстрорастущие, 1 - медленнорастущие.</p>
+</blockquote>
+</br>
+<p><strong>P/E</strong><br>
+Price/Earnings</p>
+<blockquote>
+<p>Отношение рыночной цены акций компании к ожидаемой нами прибыли
+в ближайшие 12 месяцев, очищенной от разовых и &quot;бумажных&quot; статей
+отчёта о прибылях и убытков. Оценку 10 получают самые дешёвые по
+показателю компании, 1- самые дорогие.</p>
+</blockquote>
+</br>
+<p><strong>P/BV</strong><br>
+Price/Book value of equity</p>
+<blockquote>
+<p>Отношение рыночной оценки капитала компании к балансовой
+стоимости. За балансовую стоимость принимается прогноз показателя на
+конец текущего года. Оценку 10 имеют самые дешёвые по показателю
+компании, 1 - самые дорогие.</p>
+</blockquote>
+</br>
+<p><strong>ROE</strong><br>
+Return on Equity<br>
+Earnings/Book value of equity</p>
+<blockquote>
+<p>Прибыль на акционерный капитал компании. Один из главных
+показателей эффективности бизнеса для акционеров. За прибыль берется
+прогноз её значения в ближайшие 12 месяцев. Оценку 10 получают
+самые эффективные компании, 1 - неэффективные или убыточные.</p>
+</blockquote>
+</br>
+<p><strong>EV/EBIT</strong><br>
+Enterprise Value/Earnings before interest and taxes</p>
+<blockquote>
+<p>Показатель отражает то, как рынок оценивает прибыль компании от
+основной деятельности. При этом Enterprise Value учитывает не только
+рыночную оценку акционерного капитала, но и долг, что позволяет
+сравнивать компании с разной структурой финансирования. Оценку 10
+имеют самые дешевые компании по показателю, 1 - самые дорогие.</p>
+</blockquote>
+</br>
+<p><strong>ROCE</strong><br>
+Return on capital employed
+EBIT/Capital Employed</p>
+<blockquote>
+<p>Показатель оценивает эффективность используемого капитала, поэтому по
+сути он схож с Return on Equity. Однако в капитал включается также
+долгосрочный долг, что позволяет сравнивать бизнес с разной структурой
+капитала. В числителе показателя находится прогноз прибыли до уплаты
+налогов и процентов в ближайшие 12 месяцев. Оценку 10 получают
+компании с самым эффективным бизнесом, 1- наименее эффективным.</p>
+</blockquote>
+</br>
+<p><strong>Yield</strong><br>
+Dividend/Price</p>
+<blockquote>
+<p>Показатель отражает ожидаемую нами дивидендную доходность
+компании в ближайшие 12 месяцев. Самые доходные с точки зрения
+дивидендов акции получают оценку 10, компании, которые не платят
+дивиденды -1</p>
+</blockquote>
+</br>
+<p><strong>DSI</strong><br>
+стабильность дивидендов</p>
+<blockquote>
+<p>В показателе DSI мы попытались отразить, насколько компания близка к
+статусу &quot;дивидендного аристократа&quot;, то есть способна стабильно
+выплачивать дивиденды стремясь, к их повышению. Подробнее методика
+описана здесь. Оценку 1 будут иметь компании, которые последние 7 лет
+платили дивиденды, при этом регулярно их увеличивая. Значение 0
+означает, что компания за последние 7 лет ни разу не платила дивиденды.</p>
+</blockquote>
+<blockquote>
+<p>EPS - Earnings per share
+P/E - Price to earnings ration
+Share Price - Market value per share</p>
+</blockquote>
+<p>рост кроткосрочных обязательст плохой звонок</p>
+<h2 id="81-%D1%81%D1%82%D1%80%D0%B0%D1%82%D0%B5%D0%B3%D0%B8%D0%B8">8.1. Стратегии</h2>
+<p>![[Стратегии инвестирования]]</p>
+<h2 id="9-%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9-%D0%B0%D0%BD%D0%B0%D0%BB%D0%B8%D0%B7">9. Технический анализ</h2>
+<p><img class="emoji" alt="frog" src="data:image/png;base64,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" />
+<strong>Фигуры тех анализа:</strong></p>
+<ul>
+<li>Тренды
+<ul>
+<li>канал
+<ul>
+<li>линия поддержки
+<ul>
+<li>если пробил, то становиться линией сопротивления</li>
+</ul>
+</li>
+<li>линия сопротивления
+<ul>
+<li>если пробил, то становиться линией поддержки</li>
+</ul>
+</li>
+<li>сужение канала изменение тренда</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Боковики</li>
+<li>Голова плечи</li>
+<li>Пятиволновка Эллиота+фибоначи</li>
+</ul>
+<p><img class="emoji" alt="panda_face" src="data:image/png;base64,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" /> <strong>Индекс momentum</strong>
+показывает перекупленость и недооцененость акции<br>
+график momentum всегда стремиться к нулю
+сильно вверху над нулем то сильно перекуплен</p>
+<p><img class="emoji" alt="camel" src="data:image/png;base64,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" /> <strong>Стохастический осциллятор</strong>
+график должен находиться от 20 до 80<br>
+пересечение синего и красного намечается изменение тренда</p>
+<p><img class="emoji" alt="whale2" src="data:image/png;base64,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" /><strong>Индекс относительной силы</strong>
+может находиться в диапозоне 30-70
+используется как проверка стохастического осциялтора, показывает есть ли еще диапозон для роста или нет</p>
+<blockquote>
+<p>чем сильнее рост или подение то создает импульс для изменения тренда<br>
+Gap рано или поздно закрываются. Gap цена сильно рвется от предыдущей цены<br>
+Боковик цена без тренда</p>
+</blockquote>
+<p>![[IPO]]</p>
+<p>![[список книг по финансам]]</p>
+
+</body>
+</html>
